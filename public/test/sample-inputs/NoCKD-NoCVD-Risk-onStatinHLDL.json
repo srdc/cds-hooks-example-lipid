@@ -1,0 +1,820 @@
+    {
+      "hook": "careplan-create",
+      "hookInstance": "353530b2-8cea-49e5-bd54-7cc0b381a4d8",
+      "fhirServer": "http://fhirtest.uhn.ca/baseDstu3",
+      "redirect": "http://demo.cds-hooks.org/service-done.html",
+      "user": "Practitioner/example",
+      "patient": "29119",
+      "prefetch": {
+        "patient": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+            "resourceType": "Patient",
+            "id": "29119",
+            "meta": {
+              "versionId": "94699",
+              "lastUpdated": "2015-09-16T18:12:59.795-05:00"
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>\n        \n            <p>Daniel Adams</p>\n      \n          </div>"
+            },
+            "active": true,
+            "name": [
+              {
+                "use": "official",
+                "family": [
+                  "Adams"
+                ],
+                "given": [
+                  "Daniel",
+                  "X."
+                ]
+              }
+            ],
+            "telecom": [
+              {
+                "system": "email",
+                "value": "daniel.adams@example.com"
+              }
+            ],
+            "gender": "male",
+            "birthDate": "1955-12-23",
+            "address": [
+              {
+                "use": "home",
+                "line": [
+                  "1 Hill AveApt 14"
+                ],
+                "city": "Tulsa",
+                "state": "OK",
+                "postalCode": "74117",
+                "country": "USA"
+              }
+            ]
+          }
+        },
+        "conditions": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Condition?patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Condition/29125",
+              "resource": {
+                "resourceType": "Condition",
+                "id": "29125",
+                "meta": {
+                  "versionId": "1",
+         	  "lastUpdated": "2017-02-20T09:04:26.474-05:00"
+                },
+                "text": {
+                  "status": "generated",
+                  "div": "Type 2 Diabetes"
+                },
+                "patient": {
+                  "reference": "Patient/29119"
+                },
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/sid/icd-10",
+                      "code": "E11",
+                      "display": "Type 2 Diabetes"
+                    }
+                  ],
+                  "text": "Type 2 Diabetes"
+                },
+                "clinicalStatus": "confirmed",
+                "onsetDateTime": "2005-05-22"
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "medications": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "25690280-6f53-45d7-a263-a5ea40df7143",
+          "meta": {
+            "lastUpdated": "2017-02-21T07:19:47.493-05:00"
+          },
+          "type": "searchset",
+          "total": 2,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/MedicationStatement?_pretty=true&subject=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/MedicationStatement/29159",
+              "resource": {
+                "resourceType": "MedicationStatement",
+                "id": "29159",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T07:19:13.243-05:00"
+                },
+                "status": "active",
+                "medicationCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://www.whocc.no/atc",
+                      "code": "C02AC01",
+                      "display": "Clonidine"
+                    }
+                  ],
+                  "text": "Clonidine 0.1 mg"
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "dosage": [
+                  {
+                    "text": "twice daily",
+                    "timing": {
+                      "repeat": {
+                        "frequency": 2,
+                        "period": 1,
+                        "periodUnit": "d"
+                      }
+                    },
+                    "doseQuantity": {
+                      "value": 1,
+                      "unit": "tablet",
+                      "system": "http://snomed.info/ct",
+                      "code": "428673006"
+                    }
+                  }
+                ]
+              },
+              "search": {
+                "mode": "match"
+              }
+            },
+	    {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/MedicationStatement/29430",
+              "resource": {
+                "resourceType": "MedicationStatement",
+                "id": "29430",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T07:19:13.243-05:00"
+                },
+                "status": "active",
+                "medicationCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://www.whocc.no/atc",
+                       "code": "C10AA05",
+                       "display": "atorvastatin"
+                    }
+                  ],
+                  "text": "atorvastatin 20 mg"
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "dosage": [
+                  {
+                    "text": "once daily",
+                    "timing": {
+                      "repeat": {
+                        "frequency": 1,
+                        "period": 1,
+                        "periodUnit": "d"
+                      }
+                    },
+                    "doseQuantity": {
+                      "value": 1,
+                      "unit": "tablet",
+                      "system": "http://snomed.info/ct",
+                      "code": "428673006"
+                    }
+                  }
+                ]
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+	    
+          ]
+        }},
+        "height": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9eae-405c-b377-0c20352f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=2093-3&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29126",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29126",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-20T09:11:05.413-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "8302-2"
+                    }
+                  ],
+                  "text": "Height"
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2017-02-04T19:45:59+01:00",
+                "valueQuantity": {
+                  "value": 190,
+                  "unit": "cm"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "weight": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9eae-405c-b277-0520352f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=29463-7&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29127",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29127",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-20T09:14:56.804-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "29463-7",
+                      "display": "Body Weight"
+                    }
+                  ]
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2015-12-02T08:33:28-05:00",
+                "valueQuantity": {
+                  "value": 100,
+                  "unit": "kg",
+                  "system": "http://unitsofmeasure.org/",
+                  "code": "kg"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "bloodpressure": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9eae-405c-b277-0c20362f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=55284-4&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29128",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29128",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-20T10:03:05.394-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "55284-4",
+                      "display": "Blood Pressure"
+                    }
+                  ]
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2015-07-20T02:30:43-04:00",
+                "component": [
+                  {
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "http://loinc.org",
+                          "code": "8480-6",
+                          "display": "Systolic Blood Pressure"
+                        }
+                      ]
+                    },
+                    "valueQuantity": {
+                      "value": 117,
+                      "unit": "mmHg",
+                      "system": "http://unitsofmeasure.org/",
+                      "code": "mmHg"
+                    }
+                  },
+                  {
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "http://loinc.org",
+                          "code": "8462-4",
+                          "display": "Diastolic Blood Pressure"
+                        }
+                      ]
+                    },
+                    "valueQuantity": {
+                      "value": 83,
+                      "unit": "mmHg",
+                      "system": "http://unitsofmeasure.org/",
+                      "code": "mmHg"
+                    }
+                  }
+                ]
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "cholesterol": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9eae-405c-b277-1c20352f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=2093-3&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29154",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29154",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T01:25:03.272-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "2093-3",
+                      "display": "Total Cholesterol"
+                    }
+                  ]
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2016-06-10T01:04:47-04:00",
+                "valueQuantity": {
+                  "value": 178,
+                  "unit": "mg/dL",
+                  "system": "http://unitsofmeasure.org/",
+                  "code": "mg/dL"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "hdl": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9eae-405c-b277-0c20352f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=2093-3&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29155",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29155",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T01:25:03.272-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "2085-9",
+                      "display": "High Density Lipoprotein Cholesterol"
+                    }
+                  ]
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2016-06-10T01:04:47-04:00",
+                "valueQuantity": {
+                  "value": 47,
+                  "unit": "mg/dL",
+                  "system": "http://unitsofmeasure.org/",
+                  "code": "mg/dL"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "ldl": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "5ecd8b9c-9dae-405c-b277-0c20352f6dad",
+          "meta": {
+            "lastUpdated": "2017-02-21T01:53:51.206-05:00"
+          },
+          "type": "searchset",
+          "total": 2,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=13457-7&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+      "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29421",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "29421",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2017-02-22T02:17:48.731-05:00"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "13457-7",
+              "display": "Cholesterol.in LDL"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/29119"
+        },
+        "effectiveDateTime": "2016-10-10T01:04:47-04:00",
+        "valueQuantity": {
+          "value": 95,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org/",
+          "code": "mg/dL"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+	    {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29156",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29156",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T01:25:03.272-05:00"
+                },
+                "status": "final",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "13457-7",
+                      "display": "Cholesterol in LDL"
+                    }
+                  ]
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "effectiveDateTime": "2016-06-10T01:04:47-04:00",
+                "valueQuantity": {
+                  "value": 131,
+                  "unit": "mg/dL",
+                  "system": "http://unitsofmeasure.org/",
+                  "code": "mg/dL"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "familyhistory": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "1814676c-38fb-474b-9dee-4bba6e309bde",
+          "meta": {
+            "lastUpdated": "2017-02-21T05:51:44.028-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/FamilyMemberHistory?_pretty=true&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/FamilyMemberHistory/29158",
+              "resource": {
+                "resourceType": "FamilyMemberHistory",
+                "id": "29158",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T05:50:09.378-05:00"
+                },
+                "text": {
+                  "status": "generated",
+                  "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Father died of a heart attack aged 74</div>"
+                },
+                "patient": {
+                  "reference": "Patient/29119"
+                },
+                "date": "2011-03-18",
+                "status": "completed",
+                "relationship": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/familial-relationship",
+                      "code": "FTH"
+                    }
+                  ]
+                },
+                "condition": [
+                  {
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "http://hl7.org/fhir/sid/icd-10",
+                          "code": "I21",
+                          "display": "Myocardial Infarction"
+                        }
+                      ],
+                      "text": "Heart Attack"
+                    },
+                    "onsetAge": {
+                      "value": 59,
+                      "unit": "yr",
+                      "system": "http://unitsofmeasure.org",
+                      "code": "a"
+                    },
+                    "note": {
+                      "text": "Was fishing at the time. At least he went doing someting he loved."
+                    }
+                  }
+                ]
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+        "smokingstatus": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+          "resourceType": "Bundle",
+          "id": "e9d498a4-79be-42e1-bd87-3161add71cd0",
+          "meta": {
+            "lastUpdated": "2017-02-21T02:21:35.127-05:00"
+          },
+          "type": "searchset",
+          "total": 1,
+          "link": [
+            {
+              "relation": "self",
+              "url": "http://fhirtest.uhn.ca/baseDstu3/Observation?_pretty=true&code=72166-2&patient=29119"
+            }
+          ],
+          "entry": [
+            {
+              "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29157",
+              "resource": {
+                "resourceType": "Observation",
+                "id": "29157",
+                "meta": {
+                  "versionId": "1",
+                  "lastUpdated": "2017-02-21T02:21:12.756-05:00"
+                },
+                "status": "final",
+                "category": [
+                  {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/observation-category",
+                        "code": "social-history",
+                        "display": "Social History"
+                      }
+                    ],
+                    "text": "Social History"
+                  }
+                ],
+                "code": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "72166-2",
+                      "display": "Tobacco smoking status"
+                    }
+                  ],
+                  "text": "Tobacco smoking status"
+                },
+                "subject": {
+                  "reference": "Patient/29119"
+                },
+                "issued": "2016-03-18T05:27:04Z",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "702975009",
+                      "display": "Ex-tobacco user"
+                    }
+                  ],
+                  "text": "Ex smoker"
+                }
+              },
+              "search": {
+                "mode": "match"
+              }
+            }
+          ]
+        }},
+	"eGFR": {
+		"response": {
+          "status": "200 OK"
+          },
+          "resource": {
+  		"resourceType": "Bundle",
+ 		 "id": "ebfc406e-186d-4e10-bb54-8e2b7f2258c3",
+		  "meta": {
+		    "lastUpdated": "2017-02-22T05:55:29.986-05:00"
+		  },
+		  "type": "history",
+		  "total": 1,
+		"link": [
+		  {
+		    "relation": "self",
+		    "url": "http://fhirtest.uhn.ca/baseDstu3/Observation/29423/_history/"
+		  }
+		],
+		"entry": [
+		  {
+		    "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Observation/29423",
+		    "resource": {
+		      "resourceType": "Observation",
+		      "id": "29423",
+		      "meta": {
+		        "versionId": "1",
+		        "lastUpdated": "2017-02-22T05:55:07.681-05:00"
+		      },
+		      "status": "final",
+		      "code": {
+		        "coding": [
+		          {
+		            "system": "http://loinc.org",
+		            "code": "33914-3",
+		            "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+		          }
+		        ]
+		      },
+		      "subject": {
+		        "reference": "Patient/29119"
+		      },
+		      "issued": "2016-10-04T14:34:00+01:00",
+		      "valueQuantity": {
+		        "value": 60,
+		        "unit": "mL/min/1.73m2",
+		        "system": "http://unitsofmeasure.org",
+		        "code": "mL/min/{1.73_m2}"
+		      }
+		    },
+		   "search": {
+               		 "mode": "match"
+              		}		 
+		  }
+  		]
+		}}
+      },
+      "context": []
+    }
+
