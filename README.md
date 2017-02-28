@@ -11,7 +11,7 @@ Install `nodejs`  and `npm` and then:
 ```
 npm install -g nodemon
 
-cd cds-demo
+cd cds-hooks-example-lipid
 npm install
 ```
 
@@ -19,7 +19,7 @@ npm install
 
 CDS service
 ```
-cd cds-demo
+
 nodemon
 ```
 
@@ -82,9 +82,9 @@ which convey a combination of text (information card) description of the decisio
 
 The service is hosted at "{baseUrl}/cds-services/nice-cg181"
 
-Sample input to test for each branch identified in the flowcharts are available under cds-demo/public/test/sample-inputs.
+Sample input to test for each branch identified in the flowcharts are available under public/test/sample-inputs.
 
-Detailed description of the pre-fetch configuration of each sample input is available at cds-demo/public/test/sample-inputs/Sample-CDS-Service.xlsx . 
+Detailed description of the pre-fetch configuration of each sample input is available at public/test/sample-inputs/Sample-CDS-Service.xlsx . 
 
 If the baseUrl is http://app.srdc.com.tr/cds-demo, you can invoke it as follows:
 
