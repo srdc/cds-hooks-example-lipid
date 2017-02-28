@@ -29,7 +29,7 @@ You can call the rest service via any rest client you like, e.g. curl, postman p
 
 There are two services:
 
-1. CDS Discovery Service: The discovery endpoint is always available at {baseUrl}/cds-services. For example, if the baseUrl is http://app.srdc.com.tr/cds-demo, you can call via:
+I) CDS Discovery Service: The discovery endpoint is always available at {baseUrl}/cds-services. For example, if the baseUrl is http://app.srdc.com.tr/cds-demo, you can call via:
 
 ```
 GET http://app.srdc.com.tr/cds-demo/cds-services
@@ -75,8 +75,7 @@ including lipid modification, Chapter 1.3.20-1.3.51".
 As can be seen, in the prefetch object, an object is returned containing the key/value pairs of the data elements and the FHIR queries that this service would like the client to prefetch and provide on
 each service call. The key is a string that describes the type of data being requested and the value is a string representing the FHIR query. 
 
-
-2. The "nice-cg181" service, which takes the current medical summary of the patient with in the prefetch object and returns an array of Cards which convey a combination of text (information card) description of the decision support (i.e. the proposed goals and activities that can be added to the care plan of the patient), and suggestions (suggestion card). Suggestions are represented as FHIR Goal or Activity resources (in our example the proposed type of activities include MedicationRequest, Appointment and ReferralRequest).
+II) The "nice-cg181" service, which takes the current medical summary of the patient with in the prefetch object and returns an array of Cards which convey a combination of text (information card) description of the decision support (i.e. the proposed goals and activities that can be added to the care plan of the patient), and suggestions (suggestion card). Suggestions are represented as FHIR Goal or Activity resources (in our example the proposed type of activities include MedicationRequest, Appointment and ReferralRequest).
 
 The service is hosted at "{baseUrl}/cds-services/nice-cg181"
 
