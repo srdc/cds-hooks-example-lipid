@@ -28,6 +28,7 @@ nodemon
 You can call the rest service via any rest client you like, e.g. curl, postman plugin of Chrome...
 
 There are two services:
+
 1. CDS Discovery Service: The discovery endpoint is always available at {baseUrl}/cds-services. For example, if the baseUrl is http://app.srdc.com.tr/cds-demo, you can call via:
 
 ```
