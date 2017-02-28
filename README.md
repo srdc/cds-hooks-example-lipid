@@ -76,10 +76,7 @@ As can be seen, in the prefetch object, an object is returned containing the key
 each service call. The key is a string that describes the type of data being requested and the value is a string representing the FHIR query. 
 
 
-2. The "nice-cg181" service, which takes the current medical summary of the patient with in the prefetch object and returns an array of Cards 
-which convey a combination of text (information card) description of the decision support (i.e. the proposed goals and activities that can be added to the care plan of the patient),
- and suggestions (suggestion card). Suggestions are represented as FHIR Goal or Activity resources (in our example the proposed type of activities include MedicationRequest, Appointment
- and ReferralRequest).
+2. The "nice-cg181" service, which takes the current medical summary of the patient with in the prefetch object and returns an array of Cards which convey a combination of text (information card) description of the decision support (i.e. the proposed goals and activities that can be added to the care plan of the patient), and suggestions (suggestion card). Suggestions are represented as FHIR Goal or Activity resources (in our example the proposed type of activities include MedicationRequest, Appointment and ReferralRequest).
 
 The service is hosted at "{baseUrl}/cds-services/nice-cg181"
 
