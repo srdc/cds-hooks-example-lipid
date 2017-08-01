@@ -461,6 +461,11 @@ router.post('/cds-services/nice-cg181', function(req, res){
 
      */
 
+    var patientName = "";
+    if (patient.name && patient.name.length > 0) {
+        if (patient.name[0].given) { for (var i = 0; i < patient.name[0].given.length; i++) { patientName += patient.name[0].given[i] + " "; } }
+        patientName += patient.name[0].family || "";
+    }
 
     if(t2d&!ckd){
         console.log("Lipid lowering in type 2 diabetes without CKD");
@@ -492,9 +497,13 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                     "display": "atorvastatin"
                                 }]
                             },
+                            "subject": {
+                                "reference": "Patient/" + patient.id,
+                                "display": patientName
+                            },
                             "dosageInstruction": [{
                                 "sequence": 1,
-                                "text": "80mg daily",
+                                "text": "80mg Atorvastatin daily",
                                 "maxDosePerPeriod": {
                                     "numerator": {
                                         "value": 80,
@@ -557,9 +566,13 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                             "display": "atorvastatin "
                                         }]
                                     },
+                                    "subject": {
+                                        "reference": "Patient/" + patient.id,
+                                        "display": patientName
+                                    },
                                     "dosageInstruction": [{
                                         "sequence": 1,
-                                        "text": "20mg daily",
+                                        "text": "20mg Atorvastatin daily",
                                         "maxDosePerPeriod": {
                                             "numerator": {
                                                 "value": 20,
@@ -590,6 +603,10 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                     }],
                                     "description": {
                                         "text": "Decrease Non-HDL Cholesterol by %40. Evaluate progress with 3 monthly measurements."
+                                    },
+                                    "subject": {
+                                        "reference": "Patient/" + patient.id,
+                                        "display": patientName
                                     },
                                     "target": {
                                         "measure": {
@@ -643,11 +660,16 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                         {
                                             "actor": {
                                                 "reference": "Patient/"+patient.id,
+                                                "display": patientName
                                             },
                                             "required": "required",
                                             "status": "needs-action"
                                         },
                                         {
+					    "actor": {
+                                                "reference": "Practitioner/2-000001",
+                                                "display": "Anna Svensson"
+                                            },
                                             "type": [
                                                 {
                                                     "coding": [
@@ -660,15 +682,19 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                             ],
                                             "required": "required",
                                             "status": "needs-action"
-                                        }
+                                        },
+			    		{
+				            "actor": {
+					        "reference": "Location/l-005",
+					        "display": "Östersund Health Care Center"
+				            },
+				            "required": "required",
+				            "status": "accepted"
+				        }
 
                                     ],
-                                    "requestedPeriod": [
-                                        {
-                                            "start": appointmentdate,
-                                            "end": appointmentdate
-                                        }
-                                    ]
+                                    "start": appointmentdate,
+                                    "end": appointmentdate
                                 } ]
 
                             }],
@@ -721,11 +747,16 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                 {
                                                     "actor": {
                                                         "reference": "Patient/"+patient.id,
+                                                        "display": patientName
                                                     },
                                                     "required": "required",
                                                     "status": "needs-action"
                                                 },
                                                 {
+						    "actor": {
+		                                        "reference": "Practitioner/2-000001",
+		                                        "display": "Anna Svensson"
+		                                    },
                                                     "type": [
                                                         {
                                                             "coding": [
@@ -738,15 +769,19 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                     ],
                                                     "required": "required",
                                                     "status": "needs-action"
-                                                }
+                                                },
+			    		{
+				            "actor": {
+					        "reference": "Location/l-005",
+					        "display": "Östersund Health Care Center"
+				            },
+				            "required": "required",
+				            "status": "accepted"
+				        }
 
                                             ],
-                                            "requestedPeriod": [
-                                                {
-                                                    "start": appointmentdate,
-                                                    "end": appointmentdate
-                                                }
-                                            ]
+                                            "start": appointmentdate,
+                                            "end": appointmentdate
                                         } ]
                                     }],
                                     indicator: 'info'
@@ -790,11 +825,16 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                 {
                                                     "actor": {
                                                         "reference": "Patient/"+patient.id,
+                                                        "display": patientName
                                                     },
                                                     "required": "required",
                                                     "status": "needs-action"
                                                 },
                                                 {
+						    "actor": {
+		                                        "reference": "Practitioner/2-000001",
+		                                        "display": "Anna Svensson"
+		                                    },
                                                     "type": [
                                                         {
                                                             "coding": [
@@ -807,15 +847,19 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                     ],
                                                     "required": "required",
                                                     "status": "needs-action"
-                                                }
+                                                },
+			    		{
+				            "actor": {
+					        "reference": "Location/l-005",
+					        "display": "Östersund Health Care Center"
+				            },
+				            "required": "required",
+				            "status": "accepted"
+				        }
 
                                             ],
-                                            "requestedPeriod": [
-                                                {
-                                                    "start": appointmentdatelow,
-                                                    "end": appointmentdatehigh
-                                                }
-                                            ]
+                                            "start": appointmentdatelow,
+                                            "end": appointmentdatehigh
                                         } ]
                                     },{
                                         label:'Atorvastatin Recommendation-80mg',
@@ -831,9 +875,13 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                     "display": "atorvastatin"
                                                 }]
                                             },
+                                            "subject": {
+                                                "reference": "Patient/" + patient.id,
+                                                "display": patientName
+                                            },
                                             "dosageInstruction": [{
                                                 "sequence": 1,
-                                                "text": "80mg daily",
+                                                "text": "80mg Atorvastatin daily",
                                                 "maxDosePerPeriod": {
                                                     "numerator": {
                                                         "value": 80,
@@ -891,13 +939,17 @@ router.post('/cds-services/nice-cg181', function(req, res){
                             "medicationCodeableConcept": {
                                 "coding": [{
                                     "system": "http://www.whocc.no/atc",
-                                    "code": "A10BA02",
-                                    "display": "metformin"
+                                    "code": "C10AA05",
+                                    "display": "atorvastatin"
                                 }]
+                            },
+                            "subject": {
+                                "reference": "Patient/" + patient.id,
+                                "display": patientName
                             },
                             "dosageInstruction": [{
                                 "sequence": 1,
-                                "text": "20mg daily",
+                                "text": "20mg Atorvastatin daily",
                                 "maxDosePerPeriod": {
                                     "numerator": {
                                         "value": 20,
@@ -928,6 +980,10 @@ router.post('/cds-services/nice-cg181', function(req, res){
                             }],
                             "description": {
                                 "text": "Decrease Non-HDL Cholesterol by %40. Evaluate progress with 3 monthly measurements."
+                            },
+                            "subject": {
+                                "reference": "Patient/" + patient.id,
+                                "display": patientName
                             },
                             "target": {
                                 "measure": {
@@ -981,11 +1037,16 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                 {
                                     "actor": {
                                         "reference": "Patient/"+patient.id,
+                                        "display": patientName
                                     },
                                     "required": "required",
                                     "status": "needs-action"
                                 },
                                 {
+				    "actor": {
+                                        "reference": "Practitioner/2-000001",
+                                        "display": "Anna Svensson"
+                                    },
                                     "type": [
                                         {
                                             "coding": [
@@ -998,15 +1059,19 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                     ],
                                     "required": "required",
                                     "status": "needs-action"
-                                }
+                                },
+			    		{
+				            "actor": {
+					        "reference": "Location/l-005",
+					        "display": "Östersund Health Care Center"
+				            },
+				            "required": "required",
+				            "status": "accepted"
+				        }
 
                             ],
-                            "requestedPeriod": [
-                                {
-                                    "start": appointmentdate,
-                                    "end": appointmentdate
-                                }
-                            ]
+                            "start": appointmentdate,
+                            "end": appointmentdate
                         } ]
 
                     }],
@@ -1058,12 +1123,17 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                     "participant": [
                                         {
                                             "actor": {
-                                                "reference": "Patient/"+patient.id
+                                                "reference": "Patient/"+patient.id,
+                                                "display": patientName
                                             },
                                             "required": "required",
                                             "status": "needs-action"
                                         },
                                         {
+					    "actor": {
+                                                "reference": "Practitioner/2-000001",
+                                                "display": "Anna Svensson"
+                                            },
                                             "type": [
                                                 {
                                                     "coding": [
@@ -1076,15 +1146,18 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                             ],
                                             "required": "required",
                                             "status": "needs-action"
-                                        }
-
+                                        },
+			    		{
+				            "actor": {
+					        "reference": "Location/l-005",
+					        "display": "Östersund Health Care Center"
+				            },
+				            "required": "required",
+				            "status": "accepted"
+				        }
                                     ],
-                                    "requestedPeriod": [
-                                        {
-                                            "start": appointmentdate,
-                                            "end": appointmentdate
-                                        }
-                                    ]
+                                    "start": appointmentdate,
+                                    "end": appointmentdate
                                 }]
                             }],
                             indicator: 'info'
@@ -1116,9 +1189,13 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                                 "display": "atorvastatin"
                                             }]
                                         },
+                                        "subject": {
+                                            "reference": "Patient/" + patient.id,
+                                            "display": patientName
+                                        },
                                         "dosageInstruction": [{
                                             "sequence": 1,
-                                            "text": "80mg daily",
+                                            "text": "80mg Atorvastatin daily",
                                             "maxDosePerPeriod": {
                                                 "numerator": {
                                                     "value": 80,
@@ -1164,8 +1241,9 @@ router.post('/cds-services/nice-cg181', function(req, res){
                                         },
                                         "status": "active",
                                         "category": "plan",
-                                        "patient": {
-                                            "reference": "Patient/"+patient.id
+                                        "subject": {
+                                            "reference": "Patient/"+patient.id,
+                                            "display": patientName
                                         },
                                        "specialty": {
                                             "coding": [
